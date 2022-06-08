@@ -16,25 +16,23 @@
         if(my_session.loggedin == true){
     %> 
 
-         <div class="homeImg"></div>
+         <div class="homeImg2"></div>
 
         <h1>Welcome <%= my_session.first_nm %></h1>
 
-        <div>
-            <button>Contact Accounts</button>
-        </div>
-       
-        <div>
-            <% if(view.length) {
-            
-        }
-            <a href="/employee_payslip_view/<%=view[i].emply_id%>"><button type="button">View Payslip</button></a>
-        </div>
+        <div class="viewBtnCon">
 
+            <div class="col">
+                <button class="conAccBtn">Contact Accounts</button>
+            </div>
         
+            <div class="col">
 
-        <h1>Payroll Platform</h1>    
-     
+                
+                <a href="/employee_payslip_view/<%=user.emply_id%>"><button type="button" class="viewPayslipBtn">View Payslip</button></a>
+            </div>
+        </div>
+        
     <%
         }
     %>

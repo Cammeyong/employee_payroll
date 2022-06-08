@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="dataport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= page_title %></title>
     <link rel="stylesheet" href="../public/styles.css">
 </head>
 <body>
-    
     <%- include('nav.ejs') %> 
-
 
     <a href="/logout" class="userLogout"><button type="submit" >Logout</button></a>
 
     <h1><%= my_session.first_nm + " " + my_session.last_nm %> Payslip</h1>
 
-    <form action="/employee_payslip_data" method="post" class="">
+    <form action="/employee_payslip_view" method="post" class="">
 
 
         <table>
@@ -34,8 +32,8 @@
             </thead>
 
             <tbody>
-                <% if(data.length) { 
-                    for(var i = 0; i< data.length; i++) {%>
+                <% if(data.length) { for(var i = 0; i< data.length; i++) {%>
+                    <!-- <input type="text" name="empid" value="<%= my_session.emply_id %>"> -->
                     <tr>
                         <td><%= data[i].emply_id %></td>
                         <td><%= new Date(data[i].date).toLocaleDateString('fr-CA') %></td>
@@ -45,11 +43,11 @@
                         <td><%= data[i].net_pay %></td>
                 
                     </tr>
-                <% }
+                <% } %>
                     
-                }else{ %>
+               <% }else{ %>
                     <tr>
-                        <td colspan="5">No Payslip To data </td>
+                        <td colspan="5">No Payslip To view </td>
                     </tr>
                 <% } %>
             </tbody>

@@ -11,12 +11,13 @@ router.get('/view_payslip', function(req, res) {
         console.log(err)  
         }
         else{ 
-            res.render('../views/view_payslip',
-            {
-                page_title: "Employees Payslip",
-                view: row,
-                my_session: req.session
-            });
+            res.send(row)
+            // res.render('../views/view_payslip',
+            // {
+            //     page_title: "Employees Payslip",
+            //     view: row,
+            //     my_session: req.session
+            // });
         }
                             
     });

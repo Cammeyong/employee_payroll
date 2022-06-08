@@ -11,7 +11,7 @@ router.get('/login', function(req,res,next){
 
 router.post('/login', async function(req, res) {
     var email = req.body.email;
-    var password = req.body.password;
+    // var password = req.body.password;
     
 
     conn.query(" SELECT * FROM employee_payroll.employees WHERE email = ?" , [email], function (err, rows) {
@@ -28,7 +28,12 @@ router.post('/login', async function(req, res) {
                 req.session.emply_id = rows[0].emply_id;
                 req.session.is_authorised = rows[0].authorised;
                 if (req.session.is_authorised == 1) {
-                    res.redirect('/view_payslip');
+
+                    res.render('view_payslip', {
+                        user: rows[0], 
+                        my_session: req.session
+                    });
+                    
                 } else if (req.session.is_authorised == 0 ) {
                     res.redirect('/employee_payslip_list')
                 }
