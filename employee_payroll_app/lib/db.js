@@ -8,7 +8,7 @@ var conn = mysql.createConnection({
     
     conn.connect((err)=> {
         if(!err)
-            console.log('Connected to database Successfully');
+            console.log('Connected to database...Blessings');
         else
             console.log('Connection Failed!'+ JSON.stringify(err,undefined,2));
     });
